@@ -11,7 +11,7 @@ from langchain.tools.ddg_search import DuckDuckGoSearchRun
 from pydantic import BaseModel, Field
 
 # Streamlit app
-st.title("TakedownGPT ⬇️🤖")
+st.title("Mister Cybersecurity's Takedown Request Generator")
 
 # Add 'How to Use' section to the sidebar
 st.sidebar.header("How to Use 📝")
@@ -23,14 +23,10 @@ st.sidebar.markdown("""
 5. Copy or download the draft email and send it to the appropriate email address.
 """)
 
-api_key = st.sidebar.text_input("Enter your OpenAI API key:", type="password", help="You can find your OpenAI API on the [OpenAI dashboard](https://platform.openai.com/account/api-keys)")
+api_key = "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"
 
-# Add 'Model Selection' section to the sidebar
-model_options = [
-    "gpt-3.5-turbo-0613",
-    "gpt-4-0613"
-]
-selected_model = st.sidebar.selectbox("Select the OpenAI model you would like to use:", model_options, help="You must have been given access to the [GPT-4 API](https://openai.com/waitlist/gpt-4-api) by OpenAI in order to use it.")
+
+selected_model = "gpt-4-0613"
 
 # Add 'About' section to the sidebar
 st.sidebar.header("About 🌐")
@@ -40,8 +36,6 @@ It uses a combination of autonomous LangChain Agents and OpenAI's recently intro
   1. Perform a WHOIS / RDAP lookup to identify the registrar for the given website
   2. Search the web with DuckDuckGo to find the appropriate email address for takedown requests for that domain registrar
   3. Draft a takedown request email to the hosting provider citing the reason for the takedown request
-
-Created by [Matt Adams](https://www.linkedin.com/in/matthewrwadams/).
 """)
 
 # Domain input field
