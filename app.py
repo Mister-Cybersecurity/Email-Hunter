@@ -13,17 +13,8 @@ from pydantic import BaseModel, Field
 # Streamlit app
 st.title("Mister Cybersecurity's Takedown Request Generator")
 
-# Add 'How to Use' section to the sidebar
-st.sidebar.header("How to Use 📝")
-st.sidebar.markdown("""
-1. Enter your OpenAI API key and select the OpenAI model you would like to use.
-2. Input the domain name for which you want to send a takedown request.
-3. Select the reason for the takedown request, or specify a custom reason.
-4. Click the 'Generate Takedown Request' button to create the draft email and find the appropriate email address for the takedown request.
-5. Copy or download the draft email and send it to the appropriate email address.
-""")
 
-api_key = "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"
+api_key = "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"
 
 
 selected_model = "gpt-4-0613"
