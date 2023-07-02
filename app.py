@@ -19,11 +19,11 @@ domain = st.text_input("Enter the domain that is the subject of the takedown req
 
 # Takedown reason drop-down field
 reason_options = [
+    "Malware or phishing activities",
     "Copyright infringement",
     "Trademark infringement",
     "Defamation or libel",
     "Privacy violations",
-    "Malware or phishing activities",
     "Violation of terms of service",
     "Personal safety concerns",
     "Other (specify)",
