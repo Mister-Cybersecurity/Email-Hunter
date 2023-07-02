@@ -9,25 +9,18 @@ from langchain.chat_models import ChatOpenAI
 from langchain.tools import BaseTool
 from langchain.tools.ddg_search import DuckDuckGoSearchRun
 from pydantic import BaseModel, Field
+import os
 
 # Streamlit app
 st.title("Mister Cybersecurity's Takedown Request Generator")
 
-
-api_key = "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"
+st.write(
+       os.environ["api_key"] == st.secrets["api_key"],
+)
 
 
 selected_model = "gpt-4-0613"
 
-# Add 'About' section to the sidebar
-st.sidebar.header("About 🌐")
-st.sidebar.markdown("""
-This app helps you draft takedown requests to domain registrars.
-It uses a combination of autonomous LangChain Agents and OpenAI's recently introduced support for function calling to:
-  1. Perform a WHOIS / RDAP lookup to identify the registrar for the given website
-  2. Search the web with DuckDuckGo to find the appropriate email address for takedown requests for that domain registrar
-  3. Draft a takedown request email to the hosting provider citing the reason for the takedown request
-""")
 
 # Domain input field
 domain = st.text_input("Enter the domain that is the subject of the takedown request:", help="e.g. 'example.com'")
