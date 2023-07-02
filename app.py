@@ -9,17 +9,12 @@ from langchain.chat_models import ChatOpenAI
 from langchain.tools import BaseTool
 from langchain.tools.ddg_search import DuckDuckGoSearchRun
 from pydantic import BaseModel, Field
-import os
 
 # Streamlit app
 st.title("Mister Cybersecurity's")
 st.title("Takedown Request Generator")
 
-st.write(
-       os.environ["api_key"] == st.secrets["api_key"],
-)
-
-
+api_key = st.secrets["api_key"]
 selected_model = "gpt-4-0613"
 
 
