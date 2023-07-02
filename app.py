@@ -10,10 +10,6 @@ from langchain.tools import BaseTool
 from langchain.tools.ddg_search import DuckDuckGoSearchRun
 from pydantic import BaseModel, Field
 
-# Streamlit app
-st.title("Mister Cybersecurity's")
-st.title("Takedown Request Generator")
-
 api_key = st.secrets["api_key"]
 selected_model = "gpt-4-0613"
 
