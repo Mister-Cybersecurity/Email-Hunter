@@ -12,7 +12,8 @@ from pydantic import BaseModel, Field
 import os
 
 # Streamlit app
-st.title("Mister Cybersecurity's Takedown Request Generator")
+st.title("Mister Cybersecurity's")
+st.title("Takedown Request Generator")
 
 st.write(
        os.environ["api_key"] == st.secrets["api_key"],
