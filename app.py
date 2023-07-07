@@ -15,43 +15,43 @@ selected_model = "gpt-4-0613"
 
 
 # Domain input field
-domain = st.text_input("Enter the domain that is the subject of the takedown request:", help="e.g. 'example.com'")
+domain = st.text_input("Enter the domain that is the target of your email collection:", help="e.g. 'example.com'")
 
 # Takedown reason drop-down field
-reason_options = [
-    "Malware or phishing activities",
-    "Copyright infringement",
-    "Trademark infringement",
-    "Defamation or libel",
-    "Privacy violations",
-    "Violation of terms of service",
-    "Personal safety concerns",
-    "Other (specify)",
-]
-reason = st.selectbox("Select the reason for the takedown request:", reason_options)
+#reason_options = [
+ #   "Malware or phishing activities",
+  #  "Copyright infringement",
+   # "Trademark infringement",
+    #"Defamation or libel",
+    #"Privacy violations",
+    #"Violation of terms of service",
+    #"Personal safety concerns",
+    #"Other (specify)",
+#]
+#reason = st.selectbox("Select the reason for the takedown request:", reason_options)
 
-if reason == "Other (specify)":
-    custom_reason = st.text_input("Specify the custom reason for the takedown request:")
-else:
-    custom_reason = None
+#if reason == "Other (specify)":
+    #custom_reason = st.text_input("Specify the custom reason for the takedown request:")
+#else:
+   # custom_reason = None
 
 # Additional information input field
-additional_info = st.text_area("Provide additional information to support your request (optional):", help="This information will be included in the takedown request email.")
+#additional_info = st.text_area("Provide additional information to support your request (optional):", help="This information will be included in the takedown request email.")
 
 # Advanced Options collapsible menu
-advanced_options = st.expander("Advanced Options ⚙️")
+#advanced_options = st.expander("Advanced Options ⚙️")
 
 # Add protocol options for performing domain lookups
-lookup_options = [
-    "WHOIS",
-    "RDAP"
-]
-selected_lookup = advanced_options.selectbox("Select your preferred protocol for domain registrar lookups:", lookup_options)
+#lookup_options = [
+ #   "WHOIS",
+ #   "RDAP"
+#]
+#selected_lookup = advanced_options.selectbox("Select your preferred protocol for domain registrar lookups:", lookup_options)
 
-if selected_lookup == "RDAP":
-    tool_name = "rdap_lookup"
-else:
-    tool_name = "get_registrar"
+#if selected_lookup == "RDAP":
+  #  tool_name = "rdap_lookup"
+#else:
+ #   tool_name = "get_registrar"
 
 # Check if domain is valid
 def is_valid_domain(domain):
@@ -64,7 +64,7 @@ def is_valid_domain(domain):
 def handle_error(error_message):
     st.error(error_message)
 
-if st.button("Generate Takedown Request 📨"):
+if st.button("Find E-Mail Addresses 📨"):
     if not api_key:
         handle_error("Please provide an OpenAI API key. 🔑")
     elif not domain:
@@ -131,16 +131,14 @@ if st.button("Generate Takedown Request 📨"):
         prompt = """
         Task:
 
-        1. Use the {tool_name} tool to find the domain registrar for {domain}.
-        2. Perform a web search to find the email address for takedown requests for that domain registrar.
-        3. Prepare a draft email takedown request to the hosting provider citing the following reason: {reason}. Include the additional information provided: {additional_info}
+        2. Perform a web search to find all email addresses associated with {domain}.
+        3. Prepare a list of all email addresses found 
         
         Your response must be in the following format and should not include any other information:
-        
-          - Registrar name: [registrar]
-          - Email address for takedown requests: [registrar_email]
-          - Email subject: [subject]
-          - Email body: [body]
+
+          - Target Domain: [domain]
+          - Discovered Addresses: 
+            [List of discovered addresses]
           
         Your response:
         """
