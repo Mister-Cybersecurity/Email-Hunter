@@ -144,26 +144,26 @@ if st.button("Find E-Mail Addresses 📨"):
         """
 
         # Fill placeholders with actual data
-        if custom_reason:
-            prompt_filled = prompt.format(tool_name=tool_name, domain=domain, reason=custom_reason, additional_info=additional_info)
-        else:
-            prompt_filled = prompt.format(tool_name=tool_name, domain=domain, reason=reason, additional_info=additional_info)
+        #if custom_reason:
+            #prompt_filled = prompt.format(tool_name=tool_name, domain=domain, reason=custom_reason, additional_info=additional_info)
+        #else:
+            prompt_filled = prompt.format(domain=domain)
 
         try:
             with st.spinner("Processing your request... ⏳"):
                 # Run the agent
                 response = open_ai_agent.run(prompt_filled)
             
-            if "Email address for takedown requests: [not found]" in response:
-                handle_error("Could not find the email address for takedown requests. Please try again or manually search for the domain registrar's contact information. 🚫")
-            else:
+           # if "Email address for takedown requests: [not found]" in response:
+              #  handle_error("Could not find the email address for takedown requests. Please try again or manually search for the domain registrar's contact information. 🚫")
+          #  else:
                 # Display the result
                 st.code(response, language="text")
 
             # Add download button for the generated takedown request
-            filename = f"{domain}_takedown_request.txt"
+            filename = f"{domain}_Email_Addresses.txt"
             st.download_button(
-                label="Download Takedown Request 📥",
+                label="Download Addresses 📥",
                 data=response.encode("utf-8"),
                 file_name=filename,
                 mime="text/plain",
