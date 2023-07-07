@@ -147,7 +147,7 @@ if st.button("Find E-Mail Addresses 📨"):
         #if custom_reason:
             #prompt_filled = prompt.format(tool_name=tool_name, domain=domain, reason=custom_reason, additional_info=additional_info)
         #else:
-            prompt_filled = prompt.format(domain=domain)
+        prompt_filled = prompt.format(domain=domain)
 
         try:
             with st.spinner("Processing your request... ⏳"):
